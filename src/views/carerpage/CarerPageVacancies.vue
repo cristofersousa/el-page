@@ -5,6 +5,9 @@
       <h1 class="vacancy-title">Vagas em aberto</h1>
       <h2 class="vacancy-subtitle">Desenvolvimento</h2>
 
+      <div v-if="loading">
+       <Loader />
+      </div>
       <table v-if="!errorMsg">
         <tr v-for="vacancy in activeVacancies" :key="vacancy.id">
           <td><a :href="vacancy.link" target="_blank">{{vacancy.cargo}}</a></td>
@@ -32,6 +35,7 @@ export default {
     return {
       vacancies: [],
       errorMsg: false,
+      loading: true,
     };
   },
   created() {
@@ -46,7 +50,10 @@ export default {
     loadVacancies() {
       getVacancies()
         .then((vacancies) => {
-          this.vacancies = vacancies;
+          setTimeout(() => {
+            this.vacancies = vacancies;
+            this.loading = false;
+          }, 1500);
         }).catch(() => {
           this.errorMsg = true;
         });
