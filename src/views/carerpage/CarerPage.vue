@@ -90,7 +90,7 @@
        <h1 class="vacancy-title">Vagas em aberto</h1>
        <h2 class="vacancy-subtitle">Desenvolvimento</h2>
 
-       <table>
+       <table v-if="!errorMsg">
          <tr v-for="vacancy in activeVacancies" :key="vacancy.id">
            <td><a :href="vacancy.link" target="_blank">{{vacancy.cargo}}</a></td>
            <td class="text-right" v-if="vacancy.localizacao">
@@ -102,18 +102,22 @@
            </td>
          </tr>
        </table>
+        <span class="error-msg" v-if="errorMsg">
+           <p>Ops, infelizmente ocorreu um erro ao carregar as vagas.</p>
+         </span>
      </section>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import getVacancies from '../../services/vacanciesService';
 
 export default {
   name: 'CarerPage',
   data() {
     return {
       vacancies: [],
+      errorMsg: false,
     };
   },
   created() {
@@ -126,17 +130,17 @@ export default {
   },
   methods: {
     loadVacancies() {
-      const url = 'http://www.mocky.io/v2/5d6fb6b1310000f89166087b';
-      axios.get(url)
-        .then((response) => {
-          if (response?.data?.vagas) {
-            this.vacancies = response.data.vagas;
-          }
+      getVacancies()
+        .then((vacancies) => {
+          this.vacancies = vacancies;
+        }).catch(() => {
+          this.errorMsg = true;
         });
     },
   },
 };
 </script>
+
 <style>
   .bg-hero {
     width: 100vw;
@@ -314,5 +318,18 @@ export default {
   .text-right {
     text-align: right;
     padding-right: 10px;
+  }
+
+  .error-msg {
+    display: block;
+    border: 2px dotted #c0392b;
+    padding: 5px;
+    text-align: center;;
+  }
+
+  .error-msg p {
+   color: #e74c3c;
+   font-size: .8em;
+   font-style: italic;
   }
 </style>
