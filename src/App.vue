@@ -46,4 +46,26 @@ a {
     font-size: 1em;
     display: block;
 }
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.center-image {
+  display: block;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.separate {
+  content: '';
+  display: block;
+  width: 300px;
+  height: 3px;
+  background: #999;
+  margin: 20px auto
+}
 </style>
