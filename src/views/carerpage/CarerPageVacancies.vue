@@ -5,9 +5,9 @@
       <h1 class="vacancy-title">Vagas em aberto</h1>
       <h2 class="vacancy-subtitle">Desenvolvimento</h2>
 
-      <div v-if="loading">
-       <Loader />
-      </div>
+        <div v-if="loading">
+        <Loader />
+        </div>
       <table v-if="!errorMsg">
         <tr v-for="vacancy in activeVacancies" :key="vacancy.id">
           <td><a :href="vacancy.link" target="_blank">{{vacancy.cargo}}</a></td>
