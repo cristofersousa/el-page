@@ -1,29 +1,35 @@
 # career-app
 
+LandingPage com algumas regras para exibir as informações de vagas que venham da API.
+Caso as vagas disponivéis tenham  a localização não informada, elas deverão exibir a informação `remoto`.
+As vagas que deverão ser exibidas no template só poderão ser com status `ativa`.
+
+
 ## Project setup
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+1. Clone projeto.
+> git clone `git@github.com:cristofersousa/elo-page.git`
 
-### Compiles and minifies for production
-```
-npm run build
-```
+2. Instalando as dependências do projeto, tenha Node >10:
+> npm install
 
-### Run your unit tests
-```
-npm run test:unit
-```
+3. Acessando o diretório do projeto:
+> cd elo-page
 
-### Lints and fixes files
-```
-npm run lint
-```
+4. Rodando o projeto locamente:
+> npm run serve
 
-### Customize configuration
+5.  Compiles and minifies for production
+>  npm run build
+
+6. Executando os testes unitários: 
+> npm run test
+
+7. Lints and fixes files
+
+> npm run lint
+
+### Customize configuration - Docs OFicial
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
